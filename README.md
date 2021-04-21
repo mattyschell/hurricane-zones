@@ -29,6 +29,10 @@ psql -f src/sql/aggregate.sql
 
 4. Clean up slivers and gaps
 
+```shell
+psql -f src/sql/removeinteriorrings.sql
+```
+
 
 5. Simplify https://postgis.net/docs/manual-2.5/ST_SimplifyVW.html
 
