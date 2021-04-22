@@ -35,7 +35,7 @@ psql -f src/sql/removesmallinteriorrings.sql
 ```
 
 
-5. Simplify https://postgis.net/docs/manual-2.5/ST_SimplifyVW.html
+5. Simplify 
 
 ```shell
 psql -f src/sql/simplify.sql
@@ -43,7 +43,7 @@ psql -f src/sql/simplify.sql
 
 6. Fix gaps and overlaps again
 
-    skip this for now
+    Skip this. Maybe later
 
 7. Transform to WGS84 (and maybe limit coordinate precision)
 
@@ -53,12 +53,14 @@ psql -f src/sql/transform.sql
 
 8. Export to geojson
 
-QGIS first time through, ogr2ogr next time.
+```shell
+C:\"Program Files"\"QGIS 3.16"\bin\ogr2ogr.exe -f GeoJSON hurricane_zones.geojson "PG:host=localhost dbname=scratchdatabase user=scratchuser password=PostGisIsMyDataBae!" -sql "select hurricane_zone,geog from zones_out" -lco COORDINATE_PRECISION=8
+```
 
 output: hurricane_zones.geojson
 
 9. Convert to topojson
 
-Mapshaper first time through.
+Mapshaper for now, ogr2ogr doesnt output topojson.
 
 output: hurricane_zones.json
