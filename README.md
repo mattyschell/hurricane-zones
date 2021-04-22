@@ -27,20 +27,38 @@ psql -f src/sql/cleanup.sql
 psql -f src/sql/aggregate.sql
 ```
 
-4. Clean up slivers and gaps
+4. Clean up fully contained small interior rings
 
 ```shell
-psql -f src/sql/removeinteriorrings.sql
+psql -f src/sql/functionfilterrings.sql
+psql -f src/sql/removesmallinteriorrings.sql
 ```
 
 
 5. Simplify https://postgis.net/docs/manual-2.5/ST_SimplifyVW.html
 
-   ST_SnapToGrid(ST_SimplifyVW(shape,.1), 0,0, 1,1) 
+```shell
+psql -f src/sql/simplify.sql
+```
 
 6. Fix gaps and overlaps again
 
-7. Export to geojson
+    skip this for now
 
+7. Transform to WGS84 (and maybe limit coordinate precision)
 
-8. Convert to topojson
+```shell
+psql -f src/sql/transform.sql
+```
+
+8. Export to geojson
+
+QGIS first time through, ogr2ogr next time.
+
+output: hurricane_zones.geojson
+
+9. Convert to topojson
+
+Mapshaper first time through.
+
+output: hurricane_zones.json
