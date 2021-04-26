@@ -20,6 +20,6 @@ create table zones_simplified (
 );
 create table zones_out (
     gid serial primary key
-   ,hurricane_zone varchar(1)
+   ,zone smallint
    ,geog geography(MULTIPOLYGON,4326)
 );

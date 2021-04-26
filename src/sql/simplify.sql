@@ -4,7 +4,7 @@ insert into zones_simplified (
 ) select 
     hurricane_zone
     --ST_SnapToGrid(ST_SimplifyVW(shape,100), 0,0, 1,1)
-   ,ST_SimplifyVW(geom, 100)
+   ,ST_SimplifyVW(geom, 160)
 from zones_exterior;
 update 
     zones_simplified
