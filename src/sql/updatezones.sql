@@ -1,7 +1,3 @@
-delete from 
-    zones_exterior 
-where 
-    hurricane_zone = 'X';
 update 
     zones_exterior 
 set 

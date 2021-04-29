@@ -20,6 +20,6 @@ create table zones_simplified (
 );
 create table zones_out (
     gid serial primary key
-   ,zone smallint
+   ,zone varchar(1)
    ,geog geography(MULTIPOLYGON,4326)
 );

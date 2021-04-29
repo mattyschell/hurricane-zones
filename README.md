@@ -17,6 +17,8 @@ export PGDATABASE=scratchdatabase
 
 3. Clean up atomic polygons
 
+Run 2x to ensure no updates on second pass.
+
 ```shell
 psql -f src/sql/cleanup.sql
 ```
@@ -34,12 +36,11 @@ psql -f src/sql/functionfilterrings.sql
 psql -f src/sql/removesmallinteriorrings.sql
 ```
 
-5. Remove Zone X and Update Zone 7
+5. Tweak Any Values and Types
 
 ```shell
-psql -f src/sql/update_zones.sql
+psql -f src/sql/updatezones.sql
 ```
-
 
 6. Simplify 
 
@@ -50,8 +51,7 @@ some gaps. However some gaps and overlaps may remain, requiring additional edge 
 psql -f src/sql/simplify.sql
 ```
 
-
-7. Transform to WGS84 and column formatting
+7. Transform to WGS84 and any final output formatting
 
 ```shell
 psql -f src/sql/transform.sql

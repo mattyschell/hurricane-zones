@@ -4,6 +4,6 @@ insert into zones_out (
     zone
    ,geog
 ) select 
-    hurricane_zone::int2 as zone
+    hurricane_zone as zone
    ,st_transform(geom,4326)
 from zones_simplified;
