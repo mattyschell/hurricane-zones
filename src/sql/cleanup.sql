@@ -36,3 +36,11 @@ set
 where 
     borough = '5'
 and not st_isvalid(geom);
+-- make sure the source is good before continuing
+select case count(*) 
+       when 0 then 'OK'
+       else 'Error, ' || count(*) || ' bad zone values! '
+       end
+from atomicpolygon
+where hurricane_ not in ('1','2','3','4','5','6','7','X')
+or hurricane_ is null;
