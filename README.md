@@ -3,10 +3,10 @@
 1. Export source ESRI file geodatabase to the dreaded shapeile
 
 ```
-CALL c:\Progra~1\ArcGIS\Pro\bin\Python\scripts\propy.bat .\src\py\gdb2shp.py Draft_EvacZone_20210504.gdb AtomicPolygon_EvacZone_Draft_20210416
+CALL c:\Progra~1\ArcGIS\Pro\bin\Python\scripts\propy.bat .\src\py\gdb2shp.py Draft_EvacZone_20210506.gdb Draft_EvacZone_20210506
 ```
 
-2. Set up and import dreaded shapefile into a PostGIS database
+2. Tear down anything, set up and import dreaded shapefile into a PostGIS database
 
 ```shell
 export PGUSER=scratchuser
