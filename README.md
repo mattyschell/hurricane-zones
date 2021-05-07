@@ -44,8 +44,7 @@ psql -f src/sql/updatezones.sql
 
 6. Simplify 
 
-Visvalingham-Whyatt simplification should remove spikes at zone boundaries and
-some gaps. However some gaps and overlaps may remain, requiring additional edge matching work. This is TBD.
+Visvalingham-Whyatt simplification should remove spikes at zone boundaries and some gaps. However some gaps and overlaps may remain, requiring additional edge matching work. After simplification we'll remove any interior rings remaining.
 
 ```shell
 psql -f src/sql/simplify.sql
