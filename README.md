@@ -44,19 +44,23 @@ psql -f src/sql/updatezones.sql
 
 6. Simplify 
 
-Visvalingham-Whyatt simplification should remove spikes at zone boundaries and some gaps. However some gaps and overlaps may remain, requiring additional edge matching work. After simplification we'll remove any interior rings remaining.
+Visvalingham-Whyatt simplification should remove spikes at zone boundaries and some gaps. However some gaps and overlaps may remain, requiring additional edge matching work. After simplification we'll remove large remaining interior rings.
 
 ```shell
 psql -f src/sql/simplify.sql
 ```
 
-7. Transform to WGS84 and any final output formatting
+7. Review and manual fix
+
+Visually review zones_simplified.  If this is intended to be a final-ish version manual cleanup of gaps and overlaps should happen here.
+
+8. Transform to WGS84 and any final output formatting
 
 ```shell
 psql -f src/sql/transform.sql
 ```
 
-8. Export to geojson
+9. Export to geojson
 
 ```shell
 C:\"Program Files"\"QGIS 3.16"\bin\ogr2ogr.exe -f GeoJSON hurricane_zones.geojson "PG:host=localhost dbname=scratchdatabase user=scratchuser password=PostGisIsMyDataBae!" -sql "select zone,geog from zones_out" -lco COORDINATE_PRECISION=6
@@ -64,7 +68,7 @@ C:\"Program Files"\"QGIS 3.16"\bin\ogr2ogr.exe -f GeoJSON hurricane_zones.geojso
 
 output: hurricane_zones.geojson
 
-9. Convert to topojson
+10. Convert to topojson
 
 [Mapshaper](https://mapshaper.org/) for now, ogr2ogr doesnt output topojson.
 

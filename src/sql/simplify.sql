@@ -11,16 +11,30 @@ update
 set 
     geom = ST_CollectionExtract(st_makevalid(geom),3)
 where not st_isvalid(geom);
+select 
+    sum(ST_NRings(geom)) as exterior_rings_before 
+from 
+    zones_simplified;
+select 
+    sum(st_numinteriorrings(the_geom)) as interior_rings_before
+from (select (st_dump(geom)).geom as the_geom
+      from zones_exterior) as foo;
 -- going big (relatively speaking) here
--- this is a 70ft x 70 ft ring, for example
--- or roughly 4 adjacent brownstones 
 update 
     zones_simplified 
 set 
-    geom = filter_rings(geom,5000);
+    geom = filter_rings(geom,2000);
 -- probably not necessary  
 update 
     zones_simplified
 set 
     geom = ST_CollectionExtract(st_makevalid(geom),3)
 where not st_isvalid(geom);  
+select 
+    sum(ST_NRings(geom)) as exterior_rings_after 
+from 
+    zones_simplified;
+select 
+    sum(st_numinteriorrings(the_geom)) as interior_rings_after
+from (select (st_dump(geom)).geom as the_geom
+      from zones_exterior) as foo;
