@@ -42,5 +42,5 @@ select case count(*)
        else 'Error, ' || count(*) || ' bad zone values! '
        end
 from atomicpolygon
-where hurricane_ not in ('1','2','3','4','5','6','7','X')
-or hurricane_ is null;
+where zone not in ('1','2','3','4','5','6','7','X')
+or zone is null;

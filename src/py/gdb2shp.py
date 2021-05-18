@@ -10,20 +10,22 @@ featureclass = sys.argv[2]
 
 datadir = os.getcwd() + r'\\data\\'
 
-if os.path.isfile(os.path.join(datadir,'atomicpolygon.shp')):
-     os.remove(os.path.join(datadir,'atomicpolygon.cpg'))
-     os.remove(os.path.join(datadir,'atomicpolygon.dbf'))
-     os.remove(os.path.join(datadir,'atomicpolygon.prj'))
-     os.remove(os.path.join(datadir,'atomicpolygon.sbn'))
-     os.remove(os.path.join(datadir,'atomicpolygon.sbx'))
-     os.remove(os.path.join(datadir,'atomicpolygon.shp'))
-     os.remove(os.path.join(datadir,'atomicpolygon.shp.xml'))
-     os.remove(os.path.join(datadir,'atomicpolygon.shx'))
+basefile = 'atomicpolygon'
+
+if os.path.isfile(os.path.join(datadir,'{0}.shp'.format(basefile))):
+     os.remove(os.path.join(datadir,'{0}.cpg'.format(basefile)))
+     os.remove(os.path.join(datadir,'{0}.dbf'.format(basefile)))
+     os.remove(os.path.join(datadir,'{0}.prj'.format(basefile)))
+     os.remove(os.path.join(datadir,'{0}.sbn'.format(basefile)))
+     os.remove(os.path.join(datadir,'{0}.sbx'.format(basefile)))
+     os.remove(os.path.join(datadir,'{0}.shp'.format(basefile)))
+     os.remove(os.path.join(datadir,'{0}.shp.xml'.format(basefile)))
+     os.remove(os.path.join(datadir,'{0}.shx'.format(basefile)))
        
 arcpy.FeatureClassToFeatureClass_conversion(os.path.join(datadir
                                                         ,filegdb
                                                         ,featureclass)
                                             ,datadir
-                                            ,'atomicpolygon.shp')
+                                            ,'{0}.shp'.format(basefile))
 
                                             
