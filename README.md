@@ -1,9 +1,11 @@
 # hurricane-zones
 
+Given an input of atomic polygons with zone values, produce topojson hurricane zones for https://github.com/CityOfNewYork/hurricane. 
+
 1. Export source ESRI file geodatabase to the dreaded shapeile
 
 ```
-CALL c:\Progra~1\ArcGIS\Pro\bin\Python\scripts\propy.bat .\src\py\gdb2shp.py Draft_EvacZone_20210506.gdb Draft_EvacZone_20210506
+CALL c:\Progra~1\ArcGIS\Pro\bin\Python\scripts\propy.bat .\src\py\gdb2shp.py EvacZone_20210517.gdb EvacZone_20210517
 ```
 
 2. Tear down anything, set up and import dreaded shapefile into a PostGIS database
